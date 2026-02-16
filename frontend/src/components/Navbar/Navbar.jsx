@@ -45,7 +45,7 @@ import { StoreContext } from '../../context/StoreContext';
         Menu
       </a>
     ) : (
-      <a href="/"
+      <a href="/explore-menu"
          onClick={() => setMenu('menu')}
          className={menu === 'menu' ? styles.active : ''}>
         Menu
@@ -61,7 +61,7 @@ import { StoreContext } from '../../context/StoreContext';
         Mobile-App
       </a>
     ) : (
-      <a href="/"
+      <a href="/appDownload"
          onClick={() => setMenu('mobile-app')}
          className={menu === 'mobile-app' ? styles.active : ''}>
         Mobile-App
@@ -77,7 +77,7 @@ import { StoreContext } from '../../context/StoreContext';
         Contact Us
       </a>
     ) : (
-      <a href="/"
+      <a href="/footer"
          onClick={() => setMenu('contact-us')}
          className={menu === 'contact-us' ? styles.active : ''}>
         Contact Us
