@@ -35,7 +35,7 @@ function Footer() {
 
         {/* ---------------------------------------------------------------------- */}
 
-        <div className={styles.footerContentRight}>
+        <div className={styles.footerContent}>
 
 
         <h2> GET IN TOUCH</h2>
