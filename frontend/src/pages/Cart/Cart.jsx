@@ -6,6 +6,11 @@ import { StoreContext } from '../../context/StoreContext';
 function Cart() {
   const { cartItems, food_list, removeFromCart,getTotalCartAmount,url , token, setShowLogin } = useContext(StoreContext);
   
+  // Safety check
+  if (!cartItems) {
+    return <div className={styles.cart}>Loading...</div>;
+  }
+  
 const handleCheckout = () => {
   if (!token) {
     // User logged in nahi hai
@@ -34,7 +39,7 @@ const handleCheckout = () => {
         <hr />
 
         {food_list.map((item, index) => {
-          if (cartItems[item._id] > 0) {
+          if (cartItems?.[item._id] > 0) {
             return (
               <div>
                 <div
