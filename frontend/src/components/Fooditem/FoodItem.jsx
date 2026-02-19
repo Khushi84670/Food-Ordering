@@ -8,6 +8,12 @@ function FoodItem({ id, name, price, description, image }) {
  
 
   const {cartItems,addToCart,removeFromCart,url} = useContext(StoreContext);
+  
+  // Safety check: if cartItems is undefined, don't render
+  if (!cartItems) {
+    return null;
+  }
+  
   return (
     <div className={styles.foodItem}> 
 
@@ -26,7 +32,7 @@ function FoodItem({ id, name, price, description, image }) {
  <div className={styles.foodItemImgContainer}>
         <img  src={url+"/images/"+image} alt="food Image" className={styles.foodItemImage} />
 
-        {!cartItems[id]
+        {!(cartItems?.[id])
         ?<img className={styles.add} onClick={()=>addToCart(id)} src={assets.add_icon_white} alt=""/> 
               :<div className={styles.foodItemCounter}>
                 <img onClick={()=>removeFromCart(id)} src={assets.remove_icon_red} alt=''/>

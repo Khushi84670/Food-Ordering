@@ -11,7 +11,7 @@ const loginUser = async (req,res)=>{
     let {email,password}=req.body;
     try {
 
-        const secretKey = "mySecretKey";
+        const secretKey = process.env.CRYPTO_SECRET_KEY;
         // ✅ Decrypt email
         // console.log("ecrypted Email:", email); // Debugging
         const bytese = CryptoJS.AES.decrypt(email, secretKey); 
@@ -23,7 +23,7 @@ const loginUser = async (req,res)=>{
             return res.json({success:false,message:"User Doesn't exists"})
         }
             // 🔓 Decrypt password
-            const bytes = CryptoJS.AES.decrypt(password, "mySecretKey");
+            const bytes = CryptoJS.AES.decrypt(password, process.env.CRYPTO_SECRET_KEY);
             const decryptedPassword = bytes.toString(CryptoJS.enc.Utf8);
        
           // 🔑 Compare decrypted password with hashed password
@@ -50,7 +50,7 @@ const registerUser = async (req,res)=>{
     let {name ,password,email}=req.body;
     try {
 
-        const secretKey = "mySecretKey";
+        const secretKey = process.env.CRYPTO_SECRET_KEY;
         // ✅ Decrypt email
         // console.log("ecrypted Email:", email); // Debugging
         const bytese = CryptoJS.AES.decrypt(email, secretKey); 
@@ -71,7 +71,7 @@ const registerUser = async (req,res)=>{
       
 
          // 🔓 Decrypt password 
-         const bytes = CryptoJS.AES.decrypt(password, "mySecretKey");
+         const bytes = CryptoJS.AES.decrypt(password, process.env.CRYPTO_SECRET_KEY);
          const decryptedPassword = bytes.toString(CryptoJS.enc.Utf8);
 
         //  console.log("Password hai ye :", decryptedPassword);
